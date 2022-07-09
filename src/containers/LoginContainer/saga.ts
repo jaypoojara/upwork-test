@@ -1,21 +1,26 @@
 import {put, call, takeLatest} from 'redux-saga/effects';
-// import { timeout } from '../../utils';
-import {homeContainerTypes, homeContainerCreators} from './reducer';
+import { timeout } from '../../utils';
+import {appContainerTypes, appContainerCreators} from '../../AppReducer';
 
-type ExampleCallType = {
-  name: string;
+type LoginCallType = {
+  username: string;
+  password: string;
 }
 
 const {
-  REQUEST_GET_DEMO
-} = homeContainerTypes;
+  REQUEST_USER_LOGIN
+} = appContainerTypes;
 
-export function* exampleCall({ name }: ExampleCallType) {
-  // yield call(timeout, 2000);
-  yield put(homeContainerCreators.successGetDemo(name))
+export function* loginApiCall({ username, password  }: LoginCallType) {
+  yield call(timeout, 2000);
+  if (username === 'upworkTest' && password === '2022') {
+    yield put(appContainerCreators.successUserLogin(username))
+  } else {
+    yield put(appContainerCreators.failureUserLogin('Wrong password or username, please try again'))
+  }
 }
 
-export default function* homeContainerSaga() {
+export default function* loginContainerSaga() {
   // @ts-ignore
-  yield takeLatest(REQUEST_GET_DEMO, exampleCall);
+  yield takeLatest(REQUEST_USER_LOGIN, loginApiCall);
 }

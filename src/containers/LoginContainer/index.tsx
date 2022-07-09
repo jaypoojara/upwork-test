@@ -1,8 +1,10 @@
+import { LoadingButton } from '@mui/lab';
 import {
   Box,
   Button,
   Container,
   CssBaseline,
+  FormHelperText,
   TextField,
   Typography
 } from '@mui/material';
@@ -15,6 +17,12 @@ import {
   useDispatch,
   useSelector
 } from 'react-redux';
+import { appContainerCreators } from '../../AppReducer';
+import {
+  selectError,
+  selectLoading,
+  selectUsername
+} from '../../AppSelector';
 
 type Error = {
   username: boolean;
@@ -23,24 +31,30 @@ type Error = {
 
 export default function DemoContainer() {
   const intl = useIntl();
+
   const dispatch = useDispatch();
+
+  const loading = useSelector(selectLoading);
+  const apiError = useSelector(selectError);
+
   const [errors, setErrors] = useState<Error>({
     username: false,
     password: false
   });
 
-  useEffect(() => {
-
-  }, [dispatch]);
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(event.currentTarget)
     const data = new FormData(event.currentTarget);
+    const username = data.get('username');
+    const password = data.get('password');
     setErrors({
-      username: data.get('username') === '',
-      password: data.get('password') === '',
+      username: username === '',
+      password: password === '',
     })
+    if (username !== '' || password !== '') {
+      dispatch(appContainerCreators.requestUserLogin(username, password));
+    }
   };
 
   return (
@@ -98,14 +112,20 @@ export default function DemoContainer() {
               id="password"
               helperText={errors.password ? intl.formatMessage({id: 'password_error'}) : null}
             />
-            <Button
+
+            <FormHelperText error={apiError !== null}>
+              {apiError}
+            </FormHelperText>
+
+            <LoadingButton
               type="submit"
               size={'medium'}
               variant="contained"
+              loading={loading}
               sx={{ mt: 3, mb: 2, width: '50%' }}
             >
               {intl.formatMessage({ id: 'sign_in' })}
-            </Button>
+            </LoadingButton>
           </Box>
         </Box>
       </Container>
