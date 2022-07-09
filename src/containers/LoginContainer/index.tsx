@@ -17,12 +17,14 @@ import {
   useDispatch,
   useSelector
 } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { appContainerCreators } from '../../AppReducer';
 import {
   selectError,
   selectLoading,
   selectUsername
 } from '../../AppSelector';
+import routeConstants from '../../utils/routeConstants';
 
 type Error = {
   username: boolean;
@@ -36,6 +38,15 @@ export default function DemoContainer() {
 
   const loading = useSelector(selectLoading);
   const apiError = useSelector(selectError);
+  const username = useSelector(selectUsername);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (username !== null) {
+      navigate(routeConstants.dashboard.route)
+    }
+  }, [navigate, username]);
 
   const [errors, setErrors] = useState<Error>({
     username: false,
@@ -87,6 +98,7 @@ export default function DemoContainer() {
               required
               fullWidth
               id="username"
+              defaultValue={'upworkTest'}
               onChange={() => setErrors({
                 ...errors,
                 username: false
@@ -102,6 +114,7 @@ export default function DemoContainer() {
               required
               fullWidth
               name="password"
+              defaultValue={'2022'}
               onChange={() => setErrors({
                 ...errors,
                 password: false

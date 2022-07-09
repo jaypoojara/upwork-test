@@ -1,5 +1,5 @@
-import DemoContainer from './containers/LoginContainer';
-// import ProtectedContainer from './containers/ProtectedContainer';
+import DashboardContainer from './containers/DashboardContainer';
+import LoginContainer from './containers/LoginContainer';
 import routeConstants from './utils/routeConstants';
 
 declare type RouteConfigType = {
@@ -11,8 +11,12 @@ declare type RouteConfigType = {
 }
 
 export const routeConfig: RouteConfigType = {
-  home: {
-    component: DemoContainer,
-    ...routeConstants.home
+  login: {
+    component: LoginContainer,
+    ...routeConstants.login
+  },
+  dashboard: {
+    component: DashboardContainer,
+    ...routeConstants.dashboard
   }
 };

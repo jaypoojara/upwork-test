@@ -5,5 +5,6 @@
   "username": "Username",
   "password": "Password",
   "username_error": "Please enter valid username",
-  "password_error": "Please enter valid password"
+  "password_error": "Please enter valid password",
+  "sign_out": "Sign out"
 }

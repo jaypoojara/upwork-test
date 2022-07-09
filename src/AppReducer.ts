@@ -5,6 +5,8 @@ export const { Types: appContainerTypes, Creators: appContainerCreators } = crea
   requestUserLogin: ['username', 'password'],
   successUserLogin: ['data'],
   failureUserLogin: ['error'],
+
+  requestLogout: [],
 });
 
 type InitialStateType = {
@@ -13,7 +15,7 @@ type InitialStateType = {
   loading: boolean | null;
 }
 
-export const initialState: InitialStateType = { username: null, error: null, loading: null };
+export const initialState: InitialStateType = { username: 'upworkTest', error: null, loading: null };
 
 export const appContainerReducer = (state = initialState, action: any) =>
   produce(state, (draft) => {
@@ -32,6 +34,11 @@ export const appContainerReducer = (state = initialState, action: any) =>
         draft.username = null;
         draft.error = action.error;
         draft.loading = false;
+        break;
+      case appContainerTypes.REQUEST_LOGOUT:
+        draft.username = null;
+        draft.error = null;
+        draft.loading = null;
         break;
       default:
         return state;

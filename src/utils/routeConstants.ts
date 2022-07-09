@@ -6,7 +6,7 @@ declare type RouteConstants = {
 }
 
 const routeConstants: RouteConstants = {
-  home: {
+  login: {
     route: '/',
     isProtected: false,
   },
