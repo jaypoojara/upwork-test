@@ -1,0 +1,9 @@
+{
+  "hello_world": "Hello World",
+  "loading": "Loading...",
+  "sign_in": "Sign in",
+  "username": "Username",
+  "password": "Password",
+  "username_error": "Please enter valid username",
+  "password_error": "Please enter valid password"
+}
