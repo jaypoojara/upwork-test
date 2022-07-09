@@ -13,6 +13,7 @@ import {
 } from 'react-redux';
 import { appContainerCreators } from '../../AppReducer';
 import { selectUsername } from '../../AppSelector';
+import Colors from '../../theme/colors';
 import data from '../../utils/data.json';
 
 export default function DashboardContainer() {
@@ -25,7 +26,7 @@ export default function DashboardContainer() {
       xaxis: {
         categories: data.map((data: any) => data.date)
       },
-      colors: ['#4D4DB4'],
+      colors: [Colors.purple],
       series: [
         {
           name: 'Data Series',

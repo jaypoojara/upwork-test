@@ -18,6 +18,7 @@ import {
   useSelector
 } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { inspect } from 'util';
 import { appContainerCreators } from '../../AppReducer';
 import {
   selectError,
@@ -25,6 +26,7 @@ import {
   selectUsername
 } from '../../AppSelector';
 import routeConstants from '../../utils/routeConstants';
+import colors from '../../theme/colors';
 
 type Error = {
   username: boolean;
@@ -80,7 +82,7 @@ export default function DemoContainer() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            border: '1px solid #979797',
+            border: `1px solid ${colors.gray}`,
             borderRadius: 10,
             boxShadow: 2,
             pl: 5,
