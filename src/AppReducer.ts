@@ -7,6 +7,8 @@ export const { Types: appContainerTypes, Creators: appContainerCreators } = crea
   failureUserLogin: ['error'],
 
   requestLogout: [],
+
+  clearError: [],
 });
 
 type InitialStateType = {
@@ -39,6 +41,9 @@ export const appContainerReducer = (state = initialState, action: any) =>
         draft.username = null;
         draft.error = null;
         draft.loading = null;
+        break;
+      case appContainerTypes.CLEAR_ERROR:
+        draft.error = null;
         break;
       default:
         return state;

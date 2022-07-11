@@ -16,6 +16,18 @@ import { selectUsername } from '../../AppSelector';
 import Colors from '../../theme/colors';
 import data from '../../utils/data.json';
 
+
+const Styles = {
+  container: {
+    height: '100vh',
+    width: '100vw',
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'column'
+  }
+}
+
 export default function DashboardContainer() {
   const username = useSelector(selectUsername);
   const intl = useIntl();
@@ -42,14 +54,7 @@ export default function DashboardContainer() {
   }
 
   return (
-    <Container component="main" sx={{
-      height: '100vh',
-      width: '100vw',
-      alignItems: 'center',
-      justifyContent: 'center',
-      display: 'flex',
-      flexDirection: 'column'
-    }}>
+    <Container component="main" sx={Styles.container}>
       <Typography component='h1' variant='h5'>
         {username}
       </Typography>

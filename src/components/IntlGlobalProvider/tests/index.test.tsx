@@ -20,7 +20,7 @@ describe('Test for IntlGlobalProvider', () => {
 });
 
 describe('Test for setIntl method', () => {
-  let intl;
+  let intl: any;
   beforeAll(() => {
     jest.spyOn(require('react-intl'), 'createIntl').mockImplementation(() => {
       return { formatMessage: jest.fn() };
@@ -41,7 +41,7 @@ describe('Test for setIntl method', () => {
 });
 
 describe('Test for translate method', () => {
-  let intl;
+  let intl: any;
   beforeAll(() => {
     jest.spyOn(require('react-intl'), 'createIntl').mockImplementation(() => {
       return { formatMessage: jest.fn() };

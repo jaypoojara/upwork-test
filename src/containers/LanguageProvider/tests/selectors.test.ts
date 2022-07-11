@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 import { makeSelectLocale, selectLanguage } from '../selectors';
-import { initialState } from '../reducer';
 
 describe('Tests for LanguageProvider selectors', () => {
   const globalState = {};
@@ -16,6 +15,6 @@ describe('Tests for LanguageProvider selectors', () => {
 
   it('should return the selector', () => {
     const expectedResult = createSelector(selectLanguage, (initialState) => initialState.locale);
-    expect(JSON.stringify(makeSelectLocale(initialState))).toEqual(JSON.stringify(expectedResult));
+    expect(JSON.stringify(makeSelectLocale())).toEqual(JSON.stringify(expectedResult));
   });
 });

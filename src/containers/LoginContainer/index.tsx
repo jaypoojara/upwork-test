@@ -30,6 +30,27 @@ type Error = {
   password: boolean;
 }
 
+
+const Styles = {
+  container: {
+    height: '100vh',
+    alignItems: 'center',
+    display: 'flex',
+  },
+  loginContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    border: `1px solid ${colors.gray}`,
+    borderRadius: 10,
+    boxShadow: 2,
+    pl: 5,
+    pr: 5,
+    pt: 3,
+    pb: 3
+  }
+}
+
 export default function LoginContainer() {
   const intl = useIntl();
 
@@ -67,26 +88,19 @@ export default function LoginContainer() {
     }
   };
 
+  const clearErrors = (errorField: string) => {
+    setErrors({
+      ...errors,
+      [errorField]: false
+    });
+    dispatch(appContainerCreators.clearError());
+  }
+
   return (
     <div>
-      <Container component="main" maxWidth="sm" sx={{
-        height: '100vh',
-        alignItems: 'center',
-        display: 'flex',
-      }}>
+      <Container component="main" maxWidth="sm" sx={Styles.container}>
         <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            border: `1px solid ${colors.gray}`,
-            borderRadius: 10,
-            boxShadow: 2,
-            pl: 5,
-            pr: 5,
-            pt: 3,
-            pb: 3
-          }}
+          sx={Styles.loginContainer}
         >
           <Typography component="h1" variant="h5">
             {intl.formatMessage({ id: 'sign_in' })}
@@ -103,10 +117,7 @@ export default function LoginContainer() {
               id="username"
               onChange={(e) => {
                 setUsername(e.target.value)
-                setErrors({
-                  ...errors,
-                  username: false
-                })
+                clearErrors('username')
               }}
               error={errors.username}
               label={intl.formatMessage({id: 'username'})}
@@ -126,10 +137,7 @@ export default function LoginContainer() {
               // defaultValue={'2022'}
               onChange={(e) => {
                 setPassword(e.target.value)
-                setErrors({
-                  ...errors,
-                  password: false
-                })
+                clearErrors('password')
               }}
               error={errors.password}
               label={intl.formatMessage({id: 'password'})}
