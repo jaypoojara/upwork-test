@@ -1,9 +1,7 @@
 import { LoadingButton } from '@mui/lab';
 import {
   Box,
-  Button,
   Container,
-  CssBaseline,
   FormHelperText,
   TextField,
   Typography
@@ -18,7 +16,6 @@ import {
   useSelector
 } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { inspect } from 'util';
 import { appContainerCreators } from '../../AppReducer';
 import {
   selectError,
@@ -33,22 +30,26 @@ type Error = {
   password: boolean;
 }
 
-export default function DemoContainer() {
+export default function LoginContainer() {
   const intl = useIntl();
+
+
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const dispatch = useDispatch();
 
   const loading = useSelector(selectLoading);
   const apiError = useSelector(selectError);
-  const username = useSelector(selectUsername);
+  const apiResponse = useSelector(selectUsername);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (username !== null) {
+    if (apiResponse !== null) {
       navigate(routeConstants.dashboard.route)
     }
-  }, [navigate, username]);
+  }, [navigate, apiResponse]);
 
   const [errors, setErrors] = useState<Error>({
     username: false,
@@ -57,10 +58,6 @@ export default function DemoContainer() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(event.currentTarget)
-    const data = new FormData(event.currentTarget);
-    const username = data.get('username');
-    const password = data.get('password');
     setErrors({
       username: username === '',
       password: password === '',
@@ -96,15 +93,21 @@ export default function DemoContainer() {
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
+              inputProps={{
+                "data-testid": "username-input"
+              }}
               margin="normal"
               required
               fullWidth
+              value={username}
               id="username"
-              defaultValue={'upworkTest'}
-              onChange={() => setErrors({
-                ...errors,
-                username: false
-              })}
+              onChange={(e) => {
+                setUsername(e.target.value)
+                setErrors({
+                  ...errors,
+                  username: false
+                })
+              }}
               error={errors.username}
               label={intl.formatMessage({id: 'username'})}
               name="username"
@@ -115,12 +118,19 @@ export default function DemoContainer() {
               margin="normal"
               required
               fullWidth
+              inputProps={{
+                "data-testid": "password-input"
+              }}
+              value={password}
               name="password"
-              defaultValue={'2022'}
-              onChange={() => setErrors({
-                ...errors,
-                password: false
-              })}
+              // defaultValue={'2022'}
+              onChange={(e) => {
+                setPassword(e.target.value)
+                setErrors({
+                  ...errors,
+                  password: false
+                })
+              }}
               error={errors.password}
               label={intl.formatMessage({id: 'password'})}
               type="password"
@@ -133,6 +143,7 @@ export default function DemoContainer() {
             </FormHelperText>
 
             <LoadingButton
+              data-testid={"sign-in-button"}
               type="submit"
               size={'medium'}
               variant="contained"

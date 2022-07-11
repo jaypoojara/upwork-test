@@ -60,6 +60,7 @@ export default function DashboardContainer() {
         width={800}
       />
       <Button
+        data-testid={'logout-button'}
         type={'button'}
         size={'medium'}
         variant="contained"

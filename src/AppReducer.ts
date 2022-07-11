@@ -15,7 +15,7 @@ type InitialStateType = {
   loading: boolean | null;
 }
 
-export const initialState: InitialStateType = { username: 'upworkTest', error: null, loading: null };
+export const initialState: InitialStateType = { username: null, error: null, loading: null };
 
 export const appContainerReducer = (state = initialState, action: any) =>
   produce(state, (draft) => {
