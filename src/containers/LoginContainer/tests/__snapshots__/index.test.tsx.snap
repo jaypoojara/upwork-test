@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginContainer /> tests should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <div>
+      <main
+        class="MuiContainer-root MuiContainer-maxWidthSm css-9a9ws8-MuiContainer-root"
+      >
+        <div
+          class="MuiBox-root css-bisg7f"
+        >
+          <h1
+            class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+          >
+            Sign in
+          </h1>
+          <form
+            class="MuiBox-root css-164r41r"
+            novalidate=""
+          >
+            <div
+              class="MuiFormControl-root MuiFormControl-marginNormal MuiFormControl-fullWidth MuiTextField-root css-17vbkzs-MuiFormControl-root-MuiTextField-root"
+            >
+              <label
+                class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary Mui-focused Mui-required css-147ndwt-MuiFormLabel-root-MuiInputLabel-root"
+                data-shrink="true"
+                for="username"
+                id="username-label"
+              >
+                Username
+                <span
+                  aria-hidden="true"
+                  class="MuiInputLabel-asterisk MuiFormLabel-asterisk css-dqj5rd-MuiFormLabel-asterisk"
+                >
+                   
+                  *
+                </span>
+              </label>
+              <div
+                class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth Mui-focused MuiInputBase-formControl css-3uibot-MuiInputBase-root-MuiOutlinedInput-root"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  data-testid="username-input"
+                  id="username"
+                  name="username"
+                  required=""
+                  type="text"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="css-1in441m"
+                  >
+                    <span>
+                      Username
+                       
+                      *
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+            <div
+              class="MuiFormControl-root MuiFormControl-marginNormal MuiFormControl-fullWidth MuiTextField-root css-17vbkzs-MuiFormControl-root-MuiTextField-root"
+            >
+              <label
+                class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary Mui-required css-1ykbbsm-MuiFormLabel-root-MuiInputLabel-root"
+                data-shrink="false"
+                for="password"
+                id="password-label"
+              >
+                Password
+                <span
+                  aria-hidden="true"
+                  class="MuiInputLabel-asterisk MuiFormLabel-asterisk css-dqj5rd-MuiFormLabel-asterisk"
+                >
+                   
+                  *
+                </span>
+              </label>
+              <div
+                class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-3uibot-MuiInputBase-root-MuiOutlinedInput-root"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  data-testid="password-input"
+                  id="password"
+                  name="password"
+                  required=""
+                  type="password"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="css-1ftyaf0"
+                  >
+                    <span>
+                      Password
+                       
+                      *
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+            <p
+              class="MuiFormHelperText-root css-w5l3sh-MuiFormHelperText-root"
+            />
+            <button
+              class="MuiLoadingButton-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-1p5nl2l-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+              data-testid="sign-in-button"
+              id=":r2:"
+              tabindex="0"
+              type="submit"
+            >
+              Sign in
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+`;
